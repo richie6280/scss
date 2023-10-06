@@ -1,0 +1,6 @@
+.title2 {
+  color: #fa0;
+  font-family: Helvetica, sans-serif; }
+
+.title, .title2 {
+  border: 1px solid red; }

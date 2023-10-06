@@ -1,0 +1,17 @@
+$basic-font-family: Helvetica, sans-serif;
+$basic-font-size: 16px;
+$primary-color: #fa0;
+
+%basic-title {
+  color: $primary-color;
+  font-family: $basic-font-family;
+}
+
+.title {
+  border: 1px solid red;
+}
+
+.title2 {
+  @extend %basic-title !optional;
+  @extend .title;
+}

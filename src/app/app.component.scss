@@ -1,0 +1,230 @@
+// @import "../assets/variables.scss";
+// @use "../assets/variables" as variables;
+
+// .txt {
+//     font-size: $basic-font-size;
+//     color: $primary-color;
+//     font-family: $basic-font-family;
+
+//     &:hover {
+//         color: #fff;
+//         background-color: darken($primary-color, 15%);
+//     }
+// }
+
+// .title {
+//     @extend %title !optional; 
+// }
+
+// .box {
+//     width: 100px;
+//     height: 100px;
+//     background-color: #ccc;
+//     transition: all .2s;
+//     // transition: .3s cubic-bezier(.68,-.55,.265,1.55);
+    
+//     &:hover {
+//         @include transform(rotate(90deg));
+//     }
+// }
+
+// // @media screen and (max-width:960px){
+// //     .txt {
+// //         @extend %title; 
+// //     }
+// // }
+
+// .pxToRem {
+//     font-size : pxToRem(32px); 
+// }
+
+//@each
+// $list: (orange, purple, teal);
+// @each $item in $list {
+//   .#{$item} {
+//     background: $item;
+//   }
+// }
+
+// @each $header, $size in (h1: 3em, h2: 1.5em, h3: 1em) {
+//   #{$header} {
+//     font-size: $size;
+//   }
+// }
+
+//if else
+// $device: pad;
+
+// p {
+//   @if $device == desktop {
+//     font-size: 3rem;
+//     color: orange;
+//   } @else if $device == pad {
+//     font-size: 2rem;
+//     color: lime;
+//   } @else {
+//     font-size: 1rem;
+//     color: red;
+//   }
+// }
+
+//for
+// @for $i from 1 to 4 {
+//   .fz-#{$i} {
+//     font-size: $i * 10px;
+//   }
+// }
+
+// @for $var from 1 through 4 {
+//   .fz-#{$var} {
+//     font-size: $var * 10px;
+//   }
+// }
+
+
+
+
+
+
+
+$color-primary: #fff;
+$color-primary--dark: #000;
+$color-secondary: hsl(230, 17%, 14%);
+$color-secondary--light: hsl(230, 17%, 30%);
+
+button,
+input {
+  font-family: inherit;
+}
+
+.container {
+  font-size: 62.5%;
+  font-size: 1.6rem;
+  font-family: 'Syne', sans-serif;
+  height: 100vh;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .box {
+    width: 80%;
+    max-width: 40rem;
+    text-transform: uppercase;
+    padding-block: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    transition: all 0.3s;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .dark-text {
+        margin-bottom: 1rem;
+      }
+      
+      .dark-text, .light-text {
+        line-height: 3.5rem;
+        font-size: clamp(3.5rem, 4vw, 4rem);
+      }
+    }
+
+    .mode-text {
+      line-height: 4.5rem;
+      font-size: 6rem;
+      text-align: justify;
+    }
+  }
+
+  .btn {
+    background: none;
+    width: 80%;
+    max-width: 40rem;
+    border: 1px solid;
+    margin-top: 2rem;
+    padding-block: 1rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+@mixin dark-mode {
+  background-color: $color-primary--dark;
+  
+  .box {
+    background: $color-primary;
+  }
+
+  .btn{
+    color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover{
+      color: $color-secondary;
+      background-color: $color-primary;
+    }
+  }
+
+  .mode-text {
+    color: $color-primary--dark; 
+  }
+
+  .dark-text{
+    color: $color-primary--dark;
+  }
+
+  .light-text{
+    color: $color-primary;
+  }
+}
+
+@mixin light-mode {
+  background-color: $color-primary;
+
+  .box {
+    background: $color-primary--dark;
+  }
+
+  .btn{
+    color: $color-secondary;
+    border-color: $color-secondary;
+
+    &:hover{
+      color: $color-primary;
+      background-color: $color-secondary;
+    }
+  }
+
+  .mode-text {
+    color: $color-primary; 
+  }
+
+  .dark-text{
+    color: $color-primary--dark;
+  }
+
+  .light-text{
+    color: $color-primary;
+  }
+}
+
+.dark-mode {
+  @include dark-mode;
+}
+
+.light-mode {
+  @include light-mode;
+}
+
+// @media (prefers-color-scheme: dark) {
+//   .container {
+//     @include dark-mode;
+//   }
+// }

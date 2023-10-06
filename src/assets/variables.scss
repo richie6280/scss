@@ -1,0 +1,21 @@
+$basic-font-family: Helvetica, sans-serif;
+$basic-font-size: 16px;
+$title-font-size: 24px;
+$primary-color: #fa0;
+
+%title {
+    font-size: $title-font-size;
+    color: $primary-color;
+    font-family: $basic-font-family;
+    border-bottom: 1px solid #fa0;
+}
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+@function pxToRem($px){
+    @return ($px / $basic-font-size) * 1rem;
+}
